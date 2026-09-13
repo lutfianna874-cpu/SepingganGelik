@@ -2,1168 +2,128 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Kegiatan Desa | Sepinggan Gelik</title>
 
-    <title>
-        Kelola Kegiatan - Desa Sepinggan Gelik
-    </title>
+    <link rel="stylesheet" href="./style.css">
 
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7f6;
-            color: #263238;
-        }
-
-        /* SIDEBAR */
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-
-            width: 240px;
-            height: 100vh;
-
-            background: #075e54;
-            color: white;
-
-            padding: 24px 16px;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .sub {
-            font-size: 13px;
-            opacity: .8;
-            margin-bottom: 28px;
-        }
-
-        .menu a {
-            display: block;
-
-            color: white;
-            text-decoration: none;
-
-            padding: 13px 14px;
-
-            border-radius: 8px;
-
-            margin-bottom: 7px;
-        }
-
-        .menu a:hover,
-        .menu a.active {
-            background: rgba(255,255,255,.14);
-        }
-
-        /* MAIN */
-
-        .main {
-            margin-left: 240px;
-            padding: 25px;
-        }
-
-        .top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 28px;
-        }
-
-        .btn {
-            padding: 10px 16px;
-
-            border: none;
-            border-radius: 7px;
-
-            background: #075e54;
-            color: white;
-
-            cursor: pointer;
-
-            text-decoration: none;
-        }
-
-        .btn-danger {
-            background: #c62828;
-        }
-
-        .btn-edit {
-            background: #e0a800;
-            color: #111;
-        }
-
-        /* FORM */
-
-        .form-card {
-
-            background: white;
-
-            padding: 22px;
-
-            border-radius: 12px;
-
-            margin-bottom: 25px;
-
-            box-shadow:
-                0 2px 10px rgba(0,0,0,.05);
-        }
-
-        .form-card h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-weight: bold;
-        }
-
-        input,
-        textarea {
-
-            width: 100%;
-
-            padding: 11px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 7px;
-
-            font-family: Arial;
-            font-size: 15px;
-        }
-
-        textarea {
-            min-height: 110px;
-
-            resize: vertical;
-        }
-
-        .form-buttons {
-            display: flex;
-
-            gap: 10px;
-
-            margin-top: 15px;
-        }
-
-        /* TABLE */
-
-        .table-card {
-
-            background: white;
-
-            padding: 22px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 2px 10px rgba(0,0,0,.05);
-        }
-
-        .table-wrap {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-
-            border-collapse: collapse;
-
-            margin-top: 15px;
-        }
-
-        th,
-        td {
-
-            padding: 12px;
-
-            border-bottom:
-                1px solid #eee;
-
-            text-align: left;
-        }
-
-        th {
-            background: #f8faf9;
-        }
-
-        .actions {
-            display: flex;
-
-            gap: 7px;
-        }
-
-        .message {
-            margin-top: 15px;
-
-            padding: 10px;
-
-            border-radius: 7px;
-
-            display: none;
-        }
-
-        .success {
-            display: block;
-
-            background: #dff5e9;
-
-            color: #087f5b;
-        }
-
-        .error {
-            display: block;
-
-            background: #ffe2e2;
-
-            color: #c62828;
-        }
-
-        @media(max-width:700px) {
-
-            .sidebar {
-                position: static;
-
-                width: 100%;
-
-                height: auto;
-            }
-
-            .main {
-                margin-left: 0;
-            }
-
-            .top {
-                flex-wrap: wrap;
-
-                gap: 10px;
-            }
-
-        }
-
-    </style>
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
-
 
 <body>
 
+    <!-- HEADER -->
+    <header class="navbar">
 
-<!-- SIDEBAR -->
-
-<aside class="sidebar">
-
-    <div class="logo">
-        Admin Desa
-    </div>
-
-    <div class="sub">
-        Desa Sepinggan Gelik
-    </div>
-
-    <nav class="menu">
-
-        <a href="dashboard.html">
-            Dashboard
-        </a>
-
-        <a
-            href="kegiatan.html"
-            class="active">
-
-            Kegiatan
-
-        </a>
-
-        <a href="../keindahan.html">
-            Keindahan Desa
-        </a>
-
-        <a href="../profil.html">
-            Profil Desa
-        </a>
-
-        <a href="../lokasi.html">
-            Lokasi
-        </a>
-
-        <a href="../index.html">
-            Lihat Website
-        </a>
-
-        <a
-            href="#"
-            onclick="keluar(); return false">
-
-            Keluar
-
-        </a>
-
-    </nav>
-
-</aside>
-
-
-
-<!-- MAIN -->
-
-<main class="main">
-
-
-    <div class="top">
-
-        <h1>
-            Kelola Kegiatan
-        </h1>
-
-        <a
-            href="../kegiatan.html"
-            class="btn">
-
-            Lihat Website
-
-        </a>
-
-    </div>
-
-
-
-    <!-- FORM -->
-
-    <section class="form-card">
-
-        <h2 id="formTitle">
-            Tambah Kegiatan
-        </h2>
-
-
-        <input
-            type="hidden"
-            id="id">
-
-
-        <div class="form-group">
-
-            <label>
-                Judul Kegiatan
-            </label>
-
-            <input
-                type="text"
-                id="judul"
-                placeholder="Contoh: Kerja Bakti Desa">
-
+        <div class="logo">
+            🌿 SEPINGGAN GELIK
         </div>
 
+        <nav id="navMenu">
+            <a href="./index.html">BERANDA</a>
+            <a href="./profil.html">PROFIL DESA</a>
+            <a href="./keindahan.html">KEINDAHAN</a>
+            <a href="./kegiatan.html" class="active">KEGIATAN</a>
+            <a href="./lokasi.html">LOKASI</a>
+        </nav>
 
-        <div class="form-group">
+        <button id="themeToggle" class="theme-toggle" type="button">
+            🌙
+        </button>
 
-            <label>
-                Deskripsi
-            </label>
+        <button id="menuToggle" class="menu-toggle" type="button">
+            ☰
+        </button>
 
-            <textarea
-                id="deskripsi"
-                placeholder="Tuliskan deskripsi kegiatan..."></textarea>
+    </header>
 
-        </div>
 
+    <!-- MAIN -->
+    <main>
 
-        <div class="form-group">
+        <section class="page">
 
-            <label>
-                Tanggal
-            </label>
+            <!-- JUDUL -->
+            <div class="section-title">
 
-            <input
-                type="date"
-                id="tanggal">
+                <p class="eyebrow">
+                    🌿 AKTIVITAS MASYARAKAT 🌿
+                </p>
 
-        </div>
+                <h1>KEGIATAN DESA</h1>
 
+                <div class="title-line"></div>
 
-        <div class="form-group">
+                <p>
+                    Berbagai kegiatan masyarakat Desa Sepinggan Gelik.
+                </p>
 
-            <label>
-                Link Gambar
-            </label>
+            </div>
 
-            <input
-                type="text"
-                id="gambar"
-                placeholder="Contoh: https://...">
 
-        </div>
+            <!-- FILTER -->
+            <div class="activity-filter">
 
+                <button class="filter-btn active" type="button">
+                    Semua
+                </button>
 
-        <div class="form-buttons">
+                <button class="filter-btn" type="button">
+                    2026
+                </button>
 
-            <button
-                class="btn"
-                onclick="simpanKegiatan()">
+            </div>
 
-                Simpan
 
-            </button>
+            <!--
+                KEGIATAN DARI GOOGLE SHEETS
+                Data akan dimasukkan otomatis oleh script.js
+            -->
+            <section
+                class="activity-grid"
+                id="kegiatanContainer">
 
+                <div class="loading-kegiatan">
+                    <span>🌿</span>
+                    <p>Memuat kegiatan desa...</p>
+                </div>
 
-            <button
-                class="btn"
-                style="background:#777"
-                onclick="resetForm()">
+            </section>
 
-                Batal
+        </section>
 
-            </button>
+    </main>
 
-        </div>
 
+    <!-- FOOTER -->
+    <footer>
 
-        <div
-            id="message"
-            class="message">
+        <p>
+            © 2026 Desa Sepinggan Gelik
+        </p>
 
-        </div>
+        <p>
+            Website Desa Sepinggan Gelik
+        </p>
 
-    </section>
+    </footer>
 
 
+    <!-- MUSIK DESA -->
+    <audio id="musikDesa" loop>
+        <source src="./lagu-desa.mp3" type="audio/mpeg">
+    </audio>
 
-    <!-- DATA -->
 
-    <section class="table-card">
-
-        <h2>
-            Daftar Kegiatan
-        </h2>
-
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            No
-                        </th>
-
-                        <th>
-                            Judul
-                        </th>
-
-                        <th>
-                            Tanggal
-                        </th>
-
-                        <th>
-                            Gambar
-                        </th>
-
-                        <th>
-                            Aksi
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="tabel">
-
-                    <tr>
-
-                        <td colspan="5">
-                            Memuat data...
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-
-<script>
-
-
-/* DATABASE */
-
-const DATABASE_URL =
-"https://script.google.com/macros/s/AKfycbxJUs7mVemJU9cMDVvvR5fu-RkwhWpFSE_fEZgFqxztvSMD8I2H1_h6k03lWKf8rRu6Zg/exec";
-
-
-/* ADMIN */
-
-const USERNAME = "admin";
-
-const PASSWORD = "123456";
-
-
-/* DATA */
-
-let daftarKegiatan = [];
-
-
-
-/* CEK LOGIN */
-
-if (
-    localStorage.getItem("adminLogin")
-    !== "true"
-) {
-
-    window.location.href =
-        "index.html";
-
-}
-
-
-
-/* LOGOUT */
-
-function keluar() {
-
-    localStorage.removeItem(
-        "adminLogin"
-    );
-
-    window.location.href =
-        "index.html";
-
-}
-
-
-
-/* TAMPILKAN PESAN */
-
-function pesan(text, type) {
-
-    const box =
-        document.getElementById(
-            "message"
-        );
-
-    box.textContent = text;
-
-    box.className =
-        "message " + type;
-
-}
-
-
-
-/* AMBIL DATA */
-
-async function loadData() {
-
-    try {
-
-        const response =
-            await fetch(
-                DATABASE_URL +
-                "?action=getKegiatan"
-            );
-
-        const result =
-            await response.json();
-
-
-        if (
-            !result.success
-        ) {
-
-            throw new Error(
-                result.message
-            );
-
-        }
-
-
-        daftarKegiatan =
-            result.data || [];
-
-
-        tampilkanData();
-
-
-    } catch(error) {
-
-        console.error(error);
-
-        document.getElementById(
-            "tabel"
-        ).innerHTML = `
-
-            <tr>
-
-                <td colspan="5">
-
-                    Gagal mengambil data.
-
-                </td>
-
-            </tr>
-
-        `;
-
-    }
-
-}
-
-
-
-/* TAMPILKAN DATA */
-
-function tampilkanData() {
-
-    const tabel =
-        document.getElementById(
-            "tabel"
-        );
-
-
-    if (
-        daftarKegiatan.length === 0
-    ) {
-
-        tabel.innerHTML = `
-
-            <tr>
-
-                <td colspan="5">
-
-                    Belum ada kegiatan.
-
-                </td>
-
-            </tr>
-
-        `;
-
-        return;
-
-    }
-
-
-    tabel.innerHTML =
-        daftarKegiatan
-        .map(
-            (item,index) => `
-
-            <tr>
-
-                <td>
-                    ${index + 1}
-                </td>
-
-                <td>
-                    ${escapeHtml(
-                        item.Judul || "-"
-                    )}
-                </td>
-
-                <td>
-                    ${escapeHtml(
-                        item.Tanggal || "-"
-                    )}
-                </td>
-
-                <td>
-
-                    ${
-                        item.Gambar
-                        ? `<a
-                            href="${escapeHtml(item.Gambar)}"
-                            target="_blank">
-                            Lihat
-                           </a>`
-                        : "-"
-                    }
-
-                </td>
-
-                <td>
-
-                    <div class="actions">
-
-                        <button
-                            class="btn btn-edit"
-                            onclick="editKegiatan(${index})">
-
-                            Edit
-
-                        </button>
-
-                        <button
-                            class="btn btn-danger"
-                            onclick="hapusKegiatan(${index})">
-
-                            Hapus
-
-                        </button>
-
-                    </div>
-
-                </td>
-
-            </tr>
-
-        `
-        )
-        .join("");
-
-}
-
-
-
-/* TAMBAH / EDIT */
-
-async function simpanKegiatan() {
-
-
-    const id =
-        document.getElementById(
-            "id"
-        ).value;
-
-
-    const judul =
-        document.getElementById(
-            "judul"
-        ).value.trim();
-
-
-    const deskripsi =
-        document.getElementById(
-            "deskripsi"
-        ).value.trim();
-
-
-    const tanggal =
-        document.getElementById(
-            "tanggal"
-        ).value;
-
-
-    const gambar =
-        document.getElementById(
-            "gambar"
-        ).value.trim();
-
-
-
-    if (!judul) {
-
-        pesan(
-            "Judul kegiatan wajib diisi.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-
-    const action =
-        id ? "update" : "add";
-
-
-    const data = {
-
-        action: action,
-
-        sheet: "Kegiatan",
-
-        username: USERNAME,
-
-        password: PASSWORD,
-
-        id: id,
-
-        judul: judul,
-
-        deskripsi: deskripsi,
-
-        tanggal: tanggal,
-
-        gambar: gambar
-
-    };
-
-
-    try {
-
-
-        pesan(
-            "Menyimpan data...",
-            "success"
-        );
-
-
-        const response =
-            await fetch(
-                DATABASE_URL,
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-                    },
-
-                    body:
-                        JSON.stringify(data)
-                }
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (!result.success) {
-
-            throw new Error(
-                result.message
-            );
-
-        }
-
-
-        pesan(
-            result.message,
-            "success"
-        );
-
-
-        resetForm();
-
-        await loadData();
-
-
-    } catch(error) {
-
-        console.error(error);
-
-        pesan(
-            "Gagal menyimpan: " +
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-
-/* EDIT */
-
-function editKegiatan(index) {
-
-
-    const item =
-        daftarKegiatan[index];
-
-
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "Edit Kegiatan";
-
-
-    document.getElementById(
-        "id"
-    ).value =
-        item.ID || item.Id || "";
-
-
-    document.getElementById(
-        "judul"
-    ).value =
-        item.Judul || "";
-
-
-    document.getElementById(
-        "deskripsi"
-    ).value =
-        item.Deskripsi || "";
-
-
-    document.getElementById(
-        "tanggal"
-    ).value =
-        formatTanggal(
-            item.Tanggal
-        );
-
-
-    document.getElementById(
-        "gambar"
-    ).value =
-        item.Gambar || "";
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-
-/* HAPUS */
-
-async function hapusKegiatan(index) {
-
-
-    const item =
-        daftarKegiatan[index];
-
-
-    const id =
-        item.ID || item.Id;
-
-
-    if (!id) {
-
-        alert(
-            "ID kegiatan tidak ditemukan."
-        );
-
-        return;
-
-    }
-
-
-    const yakin =
-        confirm(
-            "Yakin ingin menghapus kegiatan ini?"
-        );
-
-
-    if (!yakin) {
-        return;
-    }
-
-
-    const data = {
-
-        action: "delete",
-
-        sheet: "Kegiatan",
-
-        username: USERNAME,
-
-        password: PASSWORD,
-
-        id: id
-
-    };
-
-
-    try {
-
-
-        pesan(
-            "Menghapus data...",
-            "success"
-        );
-
-
-        const response =
-            await fetch(
-                DATABASE_URL,
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-                    },
-
-                    body:
-                        JSON.stringify(data)
-                }
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (!result.success) {
-
-            throw new Error(
-                result.message
-            );
-
-        }
-
-
-        pesan(
-            result.message,
-            "success"
-        );
-
-
-        await loadData();
-
-
-    } catch(error) {
-
-        console.error(error);
-
-        pesan(
-            "Gagal menghapus: " +
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-
-/* RESET FORM */
-
-function resetForm() {
-
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "Tambah Kegiatan";
-
-
-    document.getElementById(
-        "id"
-    ).value = "";
-
-
-    document.getElementById(
-        "judul"
-    ).value = "";
-
-
-    document.getElementById(
-        "deskripsi"
-    ).value = "";
-
-
-    document.getElementById(
-        "tanggal"
-    ).value = "";
-
-
-    document.getElementById(
-        "gambar"
-    ).value = "";
-
-}
-
-
-
-/* FORMAT TANGGAL */
-
-function formatTanggal(value) {
-
-    if (!value) {
-        return "";
-    }
-
-
-    const date =
-        new Date(value);
-
-
-    if (isNaN(date)) {
-        return "";
-    }
-
-
-    return date
-        .toISOString()
-        .split("T")[0];
-
-}
-
-
-
-/* HTML ESCAPE */
-
-function escapeHtml(value) {
-
-    return String(value)
-        .replace(
-            /[&<>"']/g,
-            function(m) {
-
-                return {
-
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#039;"
-
-                }[m];
-
-            }
-        );
-
-}
-
-
-
-/* MULAI */
-
-loadData();
-
-</script>
-
+    <!-- SCRIPT UTAMA WEBSITE -->
+    <script src="./script.js"></script>
 
 </body>
 
