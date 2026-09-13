@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Lokasi - Desa Sepinggan Gelik</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    header {
+      background: #166534;
+      color: white;
+      padding: 18px 25px;
+    }
+
+    header h1 {
+      font-size: 22px;
+    }
+
+    header p {
+      margin-top: 5px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .topbar h2 {
+      font-size: 24px;
+    }
+
+    button,
+    .btn {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    .btn-kembali {
+      background: #374151;
+      color: white;
+    }
+
+    .btn-simpan {
+      background: #166534;
+      color: white;
+    }
+
+    .btn-maps {
+      background: #2563eb;
+      color: white;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #166534;
+    }
+
+    .info {
+      background: #ecfdf5;
+      border-left: 4px solid #166534;
+      padding: 15px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .status {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .status.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .maps-preview {
+      margin-top: 10px;
+      word-break: break-all;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 20px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Admin Desa Sepinggan Gelik</h1>
+    <p>Pengelolaan Lokasi Desa</p>
+  </header>
+
+  <div class="container">
+
+    <div class="topbar">
+
+      <h2>📍 Edit Lokasi Desa</h2>
+
+      <a href="dashboard.html" class="btn btn-kembali">
+        ← Kembali ke Dashboard
+      </a>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="info">
+        <strong>Informasi:</strong><br>
+        Data lokasi di bawah ini akan digunakan oleh halaman
+        <strong>Lokasi</strong> pada website Desa Sepinggan Gelik.
+      </div>
+
+
+      <form id="lokasiForm">
+
+        <div class="form-group">
+          <label for="nama">
+            Nama Desa
+          </label>
+
+          <input
+            type="text"
+            id="nama"
+            placeholder="Nama Desa"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="kecamatan">
+            Kecamatan
+          </label>
+
+          <input
+            type="text"
+            id="kecamatan"
+            placeholder="Kecamatan"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="kabupaten">
+            Kabupaten
+          </label>
+
+          <input
+            type="text"
+            id="kabupaten"
+            placeholder="Kabupaten"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="provinsi">
+            Provinsi
+          </label>
+
+          <input
+            type="text"
+            id="provinsi"
+            placeholder="Provinsi"
+            required
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label for="maps">
+            Link Google Maps
+          </label>
+
+          <input
+            type="url"
+            id="maps"
+            placeholder="https://www.google.com/maps/..."
+            required
+          >
+
+          <div class="maps-preview" id="mapsPreview"></div>
+        </div>
+
+
+        <button
+          type="submit"
+          class="btn btn-simpan"
+          id="btnSimpan"
+        >
+          💾 Simpan Perubahan
+        </button>
+
+        <a
+          href="#"
+          class="btn btn-maps"
+          id="btnMaps"
+          target="_blank"
+        >
+          🌍 Buka Google Maps
+        </a>
+
+      </form>
+
+
+      <div id="status" class="status"></div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    // =====================================================
+    // DATABASE URL
+    // =====================================================
+
+    const DATABASE_URL =
+      "https://script.google.com/macros/s/AKfycbxJUs7mVemJU9cMDVvvR5fu-RkwhWpFSE_fEZgFqxztvSMD8I2H1_h6k03lWKf8rRu6Zg/exec";
+
+
+    // =====================================================
+    // CEK LOGIN
+    // =====================================================
+
+    const username =
+      sessionStorage.getItem("adminUsername");
+
+    const password =
+      sessionStorage.getItem("adminPassword");
+
+
+    if (!username || !password) {
+
+      alert("Silakan login terlebih dahulu.");
+
+      window.location.href = "index.html";
+
+    }
+
+
+    // =====================================================
+    // ELEMENT
+    // =====================================================
+
+    const form =
+      document.getElementById("lokasiForm");
+
+    const nama =
+      document.getElementById("nama");
+
+    const kecamatan =
+      document.getElementById("kecamatan");
+
+    const kabupaten =
+      document.getElementById("kabupaten");
+
+    const provinsi =
+      document.getElementById("provinsi");
+
+    const maps =
+      document.getElementById("maps");
+
+    const btnMaps =
+      document.getElementById("btnMaps");
+
+    const mapsPreview =
+      document.getElementById("mapsPreview");
+
+    const status =
+      document.getElementById("status");
+
+    const btnSimpan =
+      document.getElementById("btnSimpan");
+
+
+    // =====================================================
+    // TAMPILKAN LINK MAPS
+    // =====================================================
+
+    function updateMapsPreview() {
+
+      const url =
+        maps.value.trim();
+
+
+      if (url) {
+
+        mapsPreview.innerHTML =
+          "Link Maps: " + url;
+
+        btnMaps.href = url;
+
+      } else {
+
+        mapsPreview.innerHTML = "";
+
+        btnMaps.href = "#";
+
+      }
+
+    }
+
+
+    maps.addEventListener(
+      "input",
+      updateMapsPreview
+    );
+
+
+    // =====================================================
+    // AMBIL DATA LOKASI
+    // =====================================================
+
+    async function loadLokasi() {
+
+      try {
+
+        const response =
+          await fetch(
+            DATABASE_URL +
+            "?action=getLokasi"
+          );
+
+
+        const result =
+          await response.json();
+
+
+        if (
+          result.success &&
+          result.data &&
+          result.data.length > 0
+        ) {
+
+          const data =
+            result.data[0];
+
+
+          nama.value =
+            data.Nama || "";
+
+          kecamatan.value =
+            data.Kecamatan || "";
+
+          kabupaten.value =
+            data.Kabupaten || "";
+
+          provinsi.value =
+            data.Provinsi || "";
+
+          maps.value =
+            data.Maps || "";
+
+
+          updateMapsPreview();
+
+        }
+
+      } catch (error) {
+
+        showStatus(
+          "Gagal mengambil data lokasi: " +
+          error,
+          "error"
+        );
+
+      }
+
+    }
+
+
+    // =====================================================
+    // SIMPAN DATA LOKASI
+    // =====================================================
+
+    form.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        btnSimpan.disabled = true;
+
+        btnSimpan.innerText =
+          "⏳ Menyimpan...";
+
+
+        const data = {
+
+          action: "updateLokasi",
+
+          username: username,
+
+          password: password,
+
+          id: 1,
+
+          nama: nama.value.trim(),
+
+          kecamatan:
+            kecamatan.value.trim(),
+
+          kabupaten:
+            kabupaten.value.trim(),
+
+          provinsi:
+            provinsi.value.trim(),
+
+          maps:
+            maps.value.trim()
+
+        };
+
+
+        try {
+
+          const response =
+            await fetch(
+              DATABASE_URL,
+              {
+                method: "POST",
+
+                body:
+                  JSON.stringify(data)
+              }
+            );
+
+
+          const result =
+            await response.json();
+
+
+          if (result.success) {
+
+            showStatus(
+              "✓ Lokasi berhasil diperbarui.",
+              "success"
+            );
+
+          } else {
+
+            showStatus(
+              result.message ||
+              "Gagal memperbarui lokasi.",
+              "error"
+            );
+
+          }
+
+        } catch (error) {
+
+          showStatus(
+            "Terjadi kesalahan: " +
+            error,
+            "error"
+          );
+
+        }
+
+
+        btnSimpan.disabled = false;
+
+        btnSimpan.innerText =
+          "💾 Simpan Perubahan";
+
+      }
+    );
+
+
+    // =====================================================
+    // STATUS
+    // =====================================================
+
+    function showStatus(
+      message,
+      type
+    ) {
+
+      status.innerText =
+        message;
+
+      status.className =
+        "status " + type;
+
+    }
+
+
+    // =====================================================
+    // JALANKAN
+    // =====================================================
+
+    loadLokasi();
+
+  </script>
+
+</body>
+</html>

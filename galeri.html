@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Kelola Galeri - Desa Sepinggan Gelik</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            color: #263238;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            width: 240px;
+            height: 100vh;
+
+            background: #075e54;
+            color: white;
+
+            padding: 24px 16px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .sub {
+            font-size: 13px;
+            opacity: .8;
+            margin-bottom: 28px;
+        }
+
+        .menu a {
+            display: block;
+
+            color: white;
+            text-decoration: none;
+
+            padding: 13px 14px;
+
+            border-radius: 8px;
+
+            margin-bottom: 7px;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: rgba(255,255,255,.14);
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 240px;
+            padding: 25px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+
+            border: none;
+            border-radius: 7px;
+
+            background: #075e54;
+            color: white;
+
+            cursor: pointer;
+
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background: #c62828;
+        }
+
+        .btn-edit {
+            background: #e0a800;
+            color: #111;
+        }
+
+        /* FORM */
+
+        .form-card {
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        }
+
+        .form-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 7px;
+
+            font-family: Arial;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* TABLE */
+
+        .table-card {
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+
+            border-bottom: 1px solid #eee;
+
+            text-align: left;
+        }
+
+        th {
+            background: #f8faf9;
+        }
+
+        .actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .message {
+            margin-top: 15px;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+            display: none;
+        }
+
+        .success {
+            display: block;
+
+            background: #dff5e9;
+
+            color: #087f5b;
+        }
+
+        .error {
+            display: block;
+
+            background: #ffe2e2;
+
+            color: #c62828;
+        }
+
+        .preview {
+            width: 70px;
+            height: 50px;
+
+            object-fit: cover;
+
+            border-radius: 6px;
+        }
+
+        @media(max-width:700px) {
+
+            .sidebar {
+                position: static;
+
+                width: 100%;
+
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .top {
+                flex-wrap: wrap;
+
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        Admin Desa
+    </div>
+
+    <div class="sub">
+        Desa Sepinggan Gelik
+    </div>
+
+    <nav class="menu">
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="kegiatan.html">
+            Kegiatan
+        </a>
+
+        <a href="galeri.html"
+           class="active">
+            Keindahan Desa
+        </a>
+
+        <a href="profil.html">
+            Profil Desa
+        </a>
+
+        <a href="lokasi.html">
+            Lokasi
+        </a>
+
+        <a href="../index.html">
+            Lihat Website
+        </a>
+
+        <a href="#"
+           onclick="keluar(); return false">
+            Keluar
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="top">
+
+        <h1>
+            Kelola Keindahan Desa
+        </h1>
+
+        <a href="../keindahan.html"
+           class="btn">
+
+            Lihat Website
+
+        </a>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <section class="form-card">
+
+        <h2 id="formTitle">
+            Tambah Galeri
+        </h2>
+
+
+        <input type="hidden"
+               id="id">
+
+
+        <div class="form-group">
+
+            <label>
+                Judul
+            </label>
+
+            <input type="text"
+                   id="judul"
+                   placeholder="Contoh: Keindahan Sawah Desa">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Deskripsi
+            </label>
+
+            <textarea
+                id="deskripsi"
+                placeholder="Tuliskan deskripsi gambar..."></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Link Gambar
+            </label>
+
+            <input type="text"
+                   id="gambar"
+                   placeholder="Contoh: https://...">
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button class="btn"
+                    onclick="simpanGaleri()">
+
+                Simpan
+
+            </button>
+
+
+            <button class="btn"
+                    style="background:#777"
+                    onclick="resetForm()">
+
+                Batal
+
+            </button>
+
+        </div>
+
+
+        <div id="message"
+             class="message">
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA -->
+
+    <section class="table-card">
+
+        <h2>
+            Daftar Galeri
+        </h2>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+
+                        <th>Judul</th>
+
+                        <th>Deskripsi</th>
+
+                        <th>Gambar</th>
+
+                        <th>Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tabel">
+
+                    <tr>
+
+                        <td colspan="5">
+                            Memuat data...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+
+/* DATABASE */
+
+const DATABASE_URL =
+"https://script.google.com/macros/s/AKfycbxJUs7mVemJU9cMDVvvR5fu-RkwhWpFSE_fEZgFqxztvSMD8I2H1_h6k03lWKf8rRu6Zg/exec";
+
+
+/* ADMIN */
+
+const USERNAME = "admin";
+
+const PASSWORD = "123456";
+
+
+/* DATA */
+
+let daftarGaleri = [];
+
+
+/* CEK LOGIN */
+
+if (
+    localStorage.getItem("adminLogin")
+    !== "true"
+) {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* LOGOUT */
+
+function keluar() {
+
+    localStorage.removeItem(
+        "adminLogin"
+    );
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* PESAN */
+
+function pesan(text, type) {
+
+    const box =
+        document.getElementById("message");
+
+    box.textContent = text;
+
+    box.className =
+        "message " + type;
+
+}
+
+
+/* AMBIL DATA */
+
+async function loadData() {
+
+    try {
+
+        const response =
+            await fetch(
+                DATABASE_URL +
+                "?action=getGaleri"
+            );
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            throw new Error(
+                result.message
+            );
+
+        }
+
+
+        daftarGaleri =
+            result.data || [];
+
+
+        tampilkanData();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "tabel"
+        ).innerHTML = `
+
+            <tr>
+
+                <td colspan="5">
+                    Gagal mengambil data.
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+/* TAMPILKAN DATA */
+
+function tampilkanData() {
+
+    const tabel =
+        document.getElementById("tabel");
+
+
+    if (daftarGaleri.length === 0) {
+
+        tabel.innerHTML = `
+
+            <tr>
+
+                <td colspan="5">
+                    Belum ada galeri.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    tabel.innerHTML =
+        daftarGaleri
+        .map(
+            (item, index) => `
+
+            <tr>
+
+                <td>
+                    ${index + 1}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        item.Judul || "-"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        item.Deskripsi || "-"
+                    )}
+                </td>
+
+                <td>
+
+                    ${
+                        item.Gambar
+                        ? `
+
+                        <a
+                            href="${escapeHtml(item.Gambar)}"
+                            target="_blank">
+
+                            <img
+                                src="${escapeHtml(item.Gambar)}"
+                                class="preview"
+                                alt="Gambar">
+
+                        </a>
+
+                        `
+                        : "-"
+                    }
+
+                </td>
+
+                <td>
+
+                    <div class="actions">
+
+                        <button
+                            class="btn btn-edit"
+                            onclick="editGaleri(${index})">
+
+                            Edit
+
+                        </button>
+
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="hapusGaleri(${index})">
+
+                            Hapus
+
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `
+        )
+        .join("");
+
+}
+
+
+/* TAMBAH / EDIT */
+
+async function simpanGaleri() {
+
+    const id =
+        document.getElementById("id").value;
+
+    const judul =
+        document.getElementById("judul")
+        .value.trim();
+
+    const deskripsi =
+        document.getElementById("deskripsi")
+        .value.trim();
+
+    const gambar =
+        document.getElementById("gambar")
+        .value.trim();
+
+
+    if (!judul) {
+
+        pesan(
+            "Judul wajib diisi.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const action =
+        id ? "update" : "add";
+
+
+    const data = {
+
+        action: action,
+
+        sheet: "Galeri",
+
+        username: USERNAME,
+
+        password: PASSWORD,
+
+        id: id,
+
+        judul: judul,
+
+        deskripsi: deskripsi,
+
+        gambar: gambar
+
+    };
+
+
+    try {
+
+        pesan(
+            "Menyimpan data...",
+            "success"
+        );
+
+
+        const response =
+            await fetch(
+                DATABASE_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            throw new Error(
+                result.message
+            );
+
+        }
+
+
+        pesan(
+            result.message,
+            "success"
+        );
+
+
+        resetForm();
+
+        await loadData();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        pesan(
+            "Gagal menyimpan: " +
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* EDIT */
+
+function editGaleri(index) {
+
+    const item =
+        daftarGaleri[index];
+
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Edit Galeri";
+
+
+    document.getElementById(
+        "id"
+    ).value =
+        item.ID || item.Id || "";
+
+
+    document.getElementById(
+        "judul"
+    ).value =
+        item.Judul || "";
+
+
+    document.getElementById(
+        "deskripsi"
+    ).value =
+        item.Deskripsi || "";
+
+
+    document.getElementById(
+        "gambar"
+    ).value =
+        item.Gambar || "";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* HAPUS */
+
+async function hapusGaleri(index) {
+
+    const item =
+        daftarGaleri[index];
+
+
+    const id =
+        item.ID || item.Id;
+
+
+    if (!id) {
+
+        alert(
+            "ID galeri tidak ditemukan."
+        );
+
+        return;
+
+    }
+
+
+    const yakin =
+        confirm(
+            "Yakin ingin menghapus galeri ini?"
+        );
+
+
+    if (!yakin) {
+        return;
+    }
+
+
+    const data = {
+
+        action: "delete",
+
+        sheet: "Galeri",
+
+        username: USERNAME,
+
+        password: PASSWORD,
+
+        id: id
+
+    };
+
+
+    try {
+
+        pesan(
+            "Menghapus data...",
+            "success"
+        );
+
+
+        const response =
+            await fetch(
+                DATABASE_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            throw new Error(
+                result.message
+            );
+
+        }
+
+
+        pesan(
+            result.message,
+            "success"
+        );
+
+
+        await loadData();
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        pesan(
+            "Gagal menghapus: " +
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* RESET */
+
+function resetForm() {
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Tambah Galeri";
+
+
+    document.getElementById(
+        "id"
+    ).value = "";
+
+
+    document.getElementById(
+        "judul"
+    ).value = "";
+
+
+    document.getElementById(
+        "deskripsi"
+    ).value = "";
+
+
+    document.getElementById(
+        "gambar"
+    ).value = "";
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(
+            /[&<>"']/g,
+            function(m) {
+
+                return {
+
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+
+                }[m];
+
+            }
+        );
+
+}
+
+
+/* MULAI */
+
+loadData();
+
+</script>
+
+
+</body>
+
+</html>
